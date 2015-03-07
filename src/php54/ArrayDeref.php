@@ -4,8 +4,9 @@ namespace galapagos\php54;
 
 class ArrayDeref extends \PHPParser_NodeVisitorAbstract {
     public function enterNode(\PHPParser_Node $node) {
-        if ($node instanceof \PHPParser_Node_Expr_ArrayDimFetch
-            && $node->var instanceof \PHPParser_Node_Expr_FuncCall) {
+        if ($node instanceof \PHPParser_Node_Expr_ArrayDimFetch &&
+            ($node->var instanceof \PHPParser_Node_Expr_FuncCall ||
+             $node->var instanceof \PHPParser_Node_Expr_MethodCall)) {
 
             $tmp = new \PHPParser_Node_Expr_Variable('tmp');
 

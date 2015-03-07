@@ -1,0 +1,9 @@
+method array dereferencing
+-----
+<?php
+
+$this->foo()['bar'];
+-----
+<?php
+
+($tmp = $this->foo()) ? $tmp['bar'] : $tmp['bar'];
